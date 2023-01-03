@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Interview Questions Day 1</title>
+</head>
+<body>
+    <h1 style="color:red;text-align:center;text-decoration:underline;">INTERVIEW PREPARATION DAY 1</h1>
+    <h3 style="color:blue">Q:1)Difference between “ == “ and “ === “ operators.</h3>
+    <p style="color:green">Ans:-  == in JavaScript is used for comparing two variables, but it ignores the datatype of variable. === is used for comparing two variables, but this operator also checks datatype and compares two values. Checks the equality of two operands without considering their type.</p>
+    
+    <h3 style="color:blue">Q:2) What are the differences between var, let and const?</h3>
+    <p style="color:green;text-decoration: underline;">Ans:- Var Keyword</p>
+    <ol style="color:green">
+        <li>The scope of a var variable is functional scope.</li>
+        <li>It can be updated and re-declared into the scope.</li>
+        <li>It can be declared without initialization.</li>
+        <li>It can be accessed without initialization as its default value is “undefined”.</li>
+        <li>hoisting done, with initializing as ‘default’ value</li>
+    </ol>
+    <p style="color:green;text-decoration: underline;">let keyword</p>
+    <ol style="color:green">
+    <li>The scope of a let variable is block scope.</li>
+    <li>It can be updated but cannot be re-declared into the scope.</li>
+    <li>It can be declared without initialization.</li>
+    <li>It cannot be accessed without initialization otherwise it will give ‘referenceError’.</li>
+    <li>Hoisting is done , but not initialized (this is the reason for the error when we access the let variable before declaration/initialization</li>
+    </ol>
+    <p style="color:green;text-decoration: underline;">const keyword</p>
+    <ol style="color:green">
+        <li>The scope of a const variable is block scope.</li>
+        <li>It cannot be updated or re-declared into the scope.</li>
+        <li>It cannot be declared without initialization.</li>
+        <li>It cannot be accessed without initialization, as it cannot be declared without initialization.</li>
+        <li>Hoisting is done, but not initialized (this is the reason for error when we access the const variable before declaration/initialization</li>
+    </ol>
+
+    <h3 style="color:blue">Q:3)What is hoisting</h3>
+    <p style="color:green">Ans:- It is JavaScript's default behavior of moving declarations to the top of their containing scope. When a JavaScript code is interpreted, the interpreter invisibly moves (hoist) all the variable and function declarations to the top of the scope they are declared in.</p>
+    
+    <h3 style="color:blue">Q:4)What is temporal deadzone?</h3>
+    <p style="color:green">Ans:- The let and const variables are not accessible before they are initialized with some value, and the phase between the starting of the execution of block in which the let or const variable is declared till that variable is being initialized is called Temporal Dead Zone for the variable</p>
+    
+    <h3 style="color:blue">Q:5)What is execution context?</h3>
+    <p style="color:green">Ans:-It is the execution context that decides which code section has access to the functions, variables, and objects used in the code. During the execution context, the specific code gets parsed line by line then the variables and functions are stored in the memory. An execution context is similar to a container that stores variables, and the code gets evaluated and then executed. Thus, it is the execution context that provides an environment for the specific code to get executed.</p>
+    
+    <h3 style="color:blue">Q:6)What is an event loop and callstack?</h3>
+    <p style="color:green">Event Loop:- The event loop is an architectural design pattern that allows code to run asynchronously on the javascript engines and makes it possible for code to execute blocking instructions first and when available execute asynchronous functions.The Event Loop has one simple job — to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, the Event Loop will take the first event from the queue and will push it to the Call Stack, which effectively runs it.</p>
+    <p style="color:green">Call Stack:- A call stack is a mechanism for an interpreter (like the JavaScript interpreter in a web browser) to keep track of its place in a script that calls multiple functions — what function is currently being run and what functions are called from within that function, etc.</p>
+    
+    <h3 style="color:blue">Q:7)What is creation phase and execution phase?</h3>
+    <p style="color:green">Creation Phase:- The creation phase is the one in which the JS engine invokes a function but does not begin its execution. In this phase, the JS engine begins its compilation phase and scans the particular function code for compiling it but does not execute the code</p>
+    <p style="color:green">Execution Phase:- The execution phase is the next phase after finishing the creation phase. An execution phase is the one where the JS engines scan through the function in the code once again, i.e., one more time for updating the variable object with the values of the variables and then run the code</p>
+    
+    <h3 style="color:blue">Q:8)What are callbacks?</h3>
+    <p style="color:green">A callback is a function passed as an argument to another function. This technique allows a function to call another function. A callback function can run after another function has finished.</p>
+    <p style="color:green">Example of callback:-</p>
+    <pre>
+        function greeting(name) {
+            alert(`Hello, ${name}`);
+          }
+          
+          function processUserInput(callback) {
+            const name = prompt("Please enter your name.");
+            callback(name);
+          }
+          
+          processUserInput(greeting);
+
+    </pre>
+
+    <h3 style="color:blue">Q:9)Explain call(),apply(),and bind() methods.Give an example of call(),apply(),bind().</h3>
+    <p style="color:green">call() - Call is a function that helps you change the context of the invoking function.</p>
+    <p>Example of call()</p>
+    <pre>
+        let name = {
+            firstname: "Virat",
+            lastname: Kohli",
+        }
+        let printFullName = function (state){
+            console.log(this.firstname+ " "+this.lastname+"from"+ state)
+        }
+        printFullName.call(name,"Mumbai");
+        let name2 = {
+            firstname: "Sachin",
+            lastname: "Tendulkar",
+        }
+
+      printFullName.apply(name2,"Mumbai") 
+    </pre>
+    <p style="color:green">apply() - Apply is very similar to the call function. The only difference is that in apply you can pass an array as an argument list. </p>
+    <p>Example of apply()</p>
+    <pre>
+        let name = {
+            firstname: "Virat",
+            lastname: Kohli",
+        }
+        let printFullName = function (state){
+            console.log(this.firstname+ " "+this.lastname+"from"+ state)
+        }
+        printFullName.call(name,"Mumbai");
+        let name2 = {
+            firstname: "Sachin",
+            lastname: "Tendulkar",
+        }
+
+      printFullName.apply(name2, ["Mumbai"]) // using array
+    
+    <p style="color:green">bind() - Bind is a function that helps you create another function that you can execute later with the new context of this that is provided</p>
+        <pre>
+
+            let name = {
+                firstname: "Virat",
+                lastname: Kohli",
+            }
+            let printFullName = function (state){
+                console.log(this.firstname+ " "+this.lastname+"from"+ state)
+            }
+            
+            let name2 = {
+                firstname: "Sachin",
+                lastname: "Tendulkar",
+            }
+
+            let printMyName = printFullName.bind(name2, "Mumbai"); // creating new function
+            printMyName();
+        </pre>
+    <h3 style="color:blue">Q:10)What is meant by first class functions?</h3>
+    <p style="color:green">First-class functions are JavaScript functions that can behave like variables. They can also be parsed as arguments to higher-order functions. Higher-order functions are functions that return a function or take in a function as an argument.</p>
+
+    <h3 style="color:blue">Q:11)What is spread operator?</h3>
+    <p style="color:green">The JavaScript spread operator (...) allows us to quickly copy all or part of an existing array or object into another array or object.</p>
+        <p>Example:-</p>
+        function sum(x, y, z) {
+            return x + y + z;
+          }
+          
+          const numbers = [1, 2, 3];
+          
+          console.log(sum(...numbers));  //Output :6
+    <h3 style="color:blue">Q:12)What is pure functions?</h3>
+    <p style="color:green">A pure function in JavaScript is a function that returns the same result if the same arguments(input) are passed in the function</p>
+        <p>Example:-</p>
+        <pre>
+            function operationAdd(a, b){ // A pure function adding two integers passed in it.
+                return a+b;
+            }
+            
+            function operationDivide(a, b){  // Pure function to divide two integers passed in it.
+                return a/b;
+            }
+            
+            function operationMulti(a, b){    // Pure function to multiple two integers passed in it.
+                return a*b;
+            }
+            console.log(        // Calling all the pure functions
+              operationAdd(2,5),
+              operationMulti(3,2),
+              operationDivide(20,5)
+            );
+
+        </pre>
+
+    <script src="index.js"></script>
+</body>
+</html>
